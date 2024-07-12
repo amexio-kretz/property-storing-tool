@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence
+        xmlns="https://jakarta.ee/xml/ns/persistence"
+        version="3.0">
+
+    <persistence-unit name="source" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <properties>
+            <property name="hibernate.default_schema" value="kretz_schema"/>
+            <property name="hibernate.physical_naming_strategy"
+                      value="com.vladmihalcea.hibernate.type.util.CamelCaseToSnakeCaseNamingStrategy"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
+            <property name="javax.persistence.nonJtaDataSource" value="java:comp/env/jdbc/sourceDataSource"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+            <property name="hibernate.format_sql" value="true"/>
+<!--            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>-->
+<!--            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/kretz_db"/>-->
+<!--            <property name="javax.persistence.jdbc.user" value="postgres"/>-->
+<!--            <property name="javax.persistence.jdbc.password" value="admin"/>-->
+        </properties>
+    </persistence-unit>
+</persistence>

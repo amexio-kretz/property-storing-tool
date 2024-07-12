@@ -1,0 +1,45 @@
+<configuration>
+    <appender name="File" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/app.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/app.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.hibernate.SQL" level="DEBUG" additivity="false">
+        <appender-ref ref="File"/>
+    </logger>
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" level="TRACE" additivity="false">
+        <appender-ref ref="File"/>
+    </logger>
+    <logger name="org.hibernate.engine.jdbc.spi.SqlExceptionHelper" level="ERROR" additivity="false">
+        <appender-ref ref="File"/>
+    </logger>
+    <logger name="org" level="INFO" additivity="false">
+        <appender-ref ref="File"/>
+    </logger>
+    <logger name="com.zaxxer.hikari" level="DEBUG" additivity="false">
+        <appender-ref ref="File"/>
+    </logger>
+    <logger name="main" level="ERROR" additivity="false">
+        <appender-ref ref="File"/>
+    </logger>
+    <logger name="service.StoringService" level="ERROR" additivity="false">
+        <appender-ref ref="File"/>
+    </logger>
+
+    <root level="ERROR">
+        <appender-ref ref="File"/>
+        <appender-ref ref="CONSOLE" level="OFF"/>
+    </root>
+</configuration>
