@@ -1,6 +1,5 @@
 package entity;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import com.sun.istack.NotNull;
 import lombok.Setter;
@@ -13,7 +12,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "core_mailing")
-public class MailingEntity extends AuditableEntity {
+public class MailingEntity extends AuditableEntity implements EntityToConvert {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +35,11 @@ public class MailingEntity extends AuditableEntity {
     private Boolean statusOk;
 
 
+    // Need to write it manually because of the interface
+    @Override
+    public Long getId(){
+        return id;
+    }
     @Override
     public boolean equals(Object o) {
         if (o == this) {

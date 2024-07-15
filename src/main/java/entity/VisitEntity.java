@@ -1,6 +1,5 @@
 package entity;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import com.sun.istack.NotNull;
 import lombok.Setter;
@@ -14,7 +13,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "core_visit")
-public class VisitEntity extends AuditableEntity {
+public class VisitEntity extends AuditableEntity implements EntityToConvert{
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "assigned_to_id", referencedColumnName = "id")
@@ -48,6 +47,11 @@ public class VisitEntity extends AuditableEntity {
     private PropertyEntity relatedProperty;
 
 
+    // Need to write it manually because of the interface
+    @Override
+    public Long getId(){
+        return id;
+    }
     @Override
     public boolean equals(Object o){
         if (o == this) {

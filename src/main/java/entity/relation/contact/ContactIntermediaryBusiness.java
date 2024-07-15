@@ -1,6 +1,7 @@
 package entity.relation.contact;
 
 
+import entity.EntityToConvert;
 import entity.relation.ContactToContact;
 import lombok.EqualsAndHashCode;
 

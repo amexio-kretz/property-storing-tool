@@ -2,7 +2,6 @@ package entity;
 
 import com.sun.istack.NotNull;
 import lombok.Getter;
-import com.sun.istack.NotNull;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -13,7 +12,7 @@ import java.util.Objects;
 @Setter
 @Entity
 @Table(name = "core_document")
-public class DocumentEntity {
+public class DocumentEntity implements EntityToConvert{
 
     @Column(length = 50)
     private String category;
@@ -61,6 +60,11 @@ public class DocumentEntity {
     private Integer weight;
 
 
+    // Need to write it manually because of the interface
+    @Override
+    public Long getId(){
+        return id;
+    }
     @Override
     public boolean equals(Object o){
         if (o == this) {

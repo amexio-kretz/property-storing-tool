@@ -1,6 +1,5 @@
 package entity;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import com.sun.istack.NotNull;
 import lombok.Setter;
@@ -13,7 +12,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "admin_location")
-public class AdminLocationEntity {
+public class AdminLocationEntity implements EntityToConvert {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,4 +49,9 @@ public class AdminLocationEntity {
     @Column(length = 100)
     private String oldZipCode;
 
+    // Need to write it manually because of the interface
+    @Override
+    public Long getId(){
+        return id;
+    }
 }

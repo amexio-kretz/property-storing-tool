@@ -1,7 +1,6 @@
 package entity;
 
 import com.vladmihalcea.hibernate.type.array.StringArrayType;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import com.sun.istack.NotNull;
 import lombok.Setter;
@@ -17,7 +16,7 @@ import java.util.Objects;
 @Entity
 @TypeDef(name = "string-array", typeClass = StringArrayType.class)
 @Table(name = "core_contact")
-public class ContactEntity extends AuditableEntity {
+public class ContactEntity extends AuditableEntity implements EntityToConvert {
 
     // TODO Faire le coup du tableau de données, mettre la documentation
     // https://vladmihalcea.com/postgresql-array-java-list/
@@ -135,6 +134,12 @@ public class ContactEntity extends AuditableEntity {
     @Column(length = 50)
     private String cni;
 
+
+    // Need to write it manually because of the interface
+    @Override
+    public Long getId(){
+        return id;
+    }
 
     @Override
     public boolean equals(Object o) {

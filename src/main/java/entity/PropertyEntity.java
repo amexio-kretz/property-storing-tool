@@ -16,7 +16,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "core_property")
 @TypeDef(name = "string-array", typeClass = StringArrayType.class)
-public class PropertyEntity extends AuditableEntity {
+public class PropertyEntity extends AuditableEntity implements EntityToConvert {
 
     @Column(length = 255)
     private String activitesCommerciales;
@@ -593,6 +593,12 @@ public class PropertyEntity extends AuditableEntity {
     private Boolean parking;
 
     private Boolean toRenovate;
+
+    // Need to write it manually because of the interface
+    @Override
+    public Long getId(){
+        return id;
+    }
 
     @Override
     public boolean equals(Object o){

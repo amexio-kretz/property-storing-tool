@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @MappedSuperclass
-class AuditableEntity {
+public class AuditableEntity {
 
     @Column(nullable = false)
     @NotNull

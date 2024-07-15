@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "core_address_alias")
-public class AddressAliasEntity extends AuditableEntity {
+public class AddressAliasEntity extends AuditableEntity implements EntityToConvert {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -81,4 +81,10 @@ public class AddressAliasEntity extends AuditableEntity {
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "created_by_user_id", referencedColumnName = "id")
     private UserEntity createdByUser;
+
+    // Need to write it manually because of the interface
+    @Override
+    public Long getId(){
+        return id;
+    }
 }

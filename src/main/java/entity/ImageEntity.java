@@ -1,6 +1,5 @@
 package entity;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import com.sun.istack.NotNull;
 import lombok.Setter;
@@ -14,7 +13,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "core_image")
-public class ImageEntity {
+public class ImageEntity implements EntityToConvert {
 
     @Column(nullable = false)
     @NotNull
@@ -62,6 +61,11 @@ public class ImageEntity {
     private Integer weight;
 
 
+    // Need to write it manually because of the interface
+    @Override
+    public Long getId(){
+        return id;
+    }
     @Override
     public int hashCode() {
         return Objects.hash(id);

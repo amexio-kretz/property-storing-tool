@@ -1,6 +1,5 @@
 package entity;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import com.sun.istack.NotNull;
 import lombok.Setter;
@@ -13,7 +12,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "core_oldreference")
-public class OldReferenceEntity {
+public class OldReferenceEntity implements EntityToConvert {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +27,11 @@ public class OldReferenceEntity {
     private PropertyEntity relatedProperty;
 
 
+    // Need to write it manually because of the interface
+    @Override
+    public Long getId(){
+        return id;
+    }
     @Override
     public int hashCode() {
         return Objects.hash(id);

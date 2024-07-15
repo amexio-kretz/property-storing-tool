@@ -1,6 +1,5 @@
 package entity;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import com.sun.istack.NotNull;
 import lombok.Setter;
@@ -13,7 +12,7 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "core_content")
-public class ContentEntity extends AuditableEntity {
+public class ContentEntity extends AuditableEntity implements EntityToConvert {
 
     /**
      * @deprecated Not used
@@ -90,4 +89,9 @@ public class ContentEntity extends AuditableEntity {
     @NotNull
     private String textZh;
 
+    // Need to write it manually because of the interface
+    @Override
+    public Long getId(){
+        return id;
+    }
 }

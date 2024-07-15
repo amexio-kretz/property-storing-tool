@@ -1,6 +1,5 @@
 package entity;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import com.sun.istack.NotNull;
 import lombok.Setter;
@@ -14,7 +13,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "users_user")
-public class UserEntity {
+public class UserEntity implements EntityToConvert {
 
     /**
      * @deprecated Not used
@@ -157,6 +156,11 @@ public class UserEntity {
     private Integer weight;
 
 
+    // Need to write it manually because of the interface
+    @Override
+    public Long getId(){
+        return id;
+    }
     @Override
     public int hashCode() {
         return Objects.hash(id);

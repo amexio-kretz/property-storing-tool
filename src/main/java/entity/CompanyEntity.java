@@ -1,6 +1,5 @@
 package entity;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import com.sun.istack.NotNull;
 import lombok.Setter;
@@ -12,7 +11,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "core_company")
-public class CompanyEntity extends AuditableEntity {
+public class CompanyEntity extends AuditableEntity implements EntityToConvert{
 
     @Column(nullable = false, length = 50)
     @NotNull
@@ -41,4 +40,9 @@ public class CompanyEntity extends AuditableEntity {
     @Column(length = 60)
     private String numeroFiscal;
 
+    // Need to write it manually because of the interface
+    @Override
+    public Long getId(){
+        return id;
+    }
 }

@@ -39,10 +39,10 @@ public class Main {
                 }
 
                 System.out.println("Proceeding...");
-                copyService.store(lowerLimitDate, upperLimitDate);
-
-                System.out.println("Data were successfully stored\n\n" +
-                        "Enter y for store other data, any other key to quit");
+                 if (copyService.store(lowerLimitDate, upperLimitDate)){
+                    System.out.println("Data were successfully stored\n");
+                 }
+                 System.out.println("Enter y for store other data, any other key to quit");
             } while (scanner.nextLine().equalsIgnoreCase("y"));
 
 

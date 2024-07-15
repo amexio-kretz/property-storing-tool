@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 @Setter
 @Entity
 @Table(name = "core_export_log")
-public class ExportLogEntity {
+public class ExportLogEntity implements EntityToConvert {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,4 +36,9 @@ public class ExportLogEntity {
     @Column
     private String propertyReference;
 
+    // Need to write it manually because of the interface
+    @Override
+    public Long getId(){
+        return Id;
+    }
 }

@@ -1,7 +1,6 @@
 package entity;
 
 import com.sun.istack.NotNull;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +12,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "core_district")
-public class DistrictEntity extends AuditableEntity {
+public class DistrictEntity extends AuditableEntity implements EntityToConvert {
 
     /**
      * @deprecated Always null
@@ -46,6 +45,11 @@ public class DistrictEntity extends AuditableEntity {
     private String name;
 
 
+    // Need to write it manually because of the interface
+    @Override
+    public Long getId(){
+        return id;
+    }
     @Override
     public boolean equals(Object o) {
         if (o == this) {

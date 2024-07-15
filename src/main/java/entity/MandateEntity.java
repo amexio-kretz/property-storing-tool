@@ -2,7 +2,6 @@ package entity;
 
 import com.sun.istack.NotNull;
 import com.vladmihalcea.hibernate.type.array.StringArrayType;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Type;
@@ -22,7 +21,7 @@ import java.util.Objects;
 @Entity
 @TypeDef(name = "string-array", typeClass = StringArrayType.class)
 @Table(name = "core_mandate")
-public class MandateEntity extends AuditableEntity {
+public class MandateEntity extends AuditableEntity implements EntityToConvert {
 
     private Boolean advertisedByOtherAgencies;
 
@@ -104,6 +103,11 @@ public class MandateEntity extends AuditableEntity {
     private String refCadastrale;
 
 
+    // Need to write it manually because of the interface
+    @Override
+    public Long getId(){
+        return id;
+    }
     @Override
     public int hashCode() {
         return Objects.hash(id);

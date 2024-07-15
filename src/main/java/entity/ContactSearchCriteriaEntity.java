@@ -19,7 +19,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "core_contact_search_criteria")
 @TypeDef(name = "string-array", typeClass = StringArrayType.class)
-public class ContactSearchCriteriaEntity {
+public class ContactSearchCriteriaEntity implements EntityToConvert {
 
     @Column(nullable = false)
     @NotNull
@@ -102,5 +102,10 @@ public class ContactSearchCriteriaEntity {
 
     private Boolean toRenovate;
 
+    // Need to write it manually because of the interface
+    @Override
+    public Long getId(){
+        return id;
+    }
 
 }
